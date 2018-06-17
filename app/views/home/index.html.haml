@@ -20,13 +20,14 @@
 %table.table.table-hover.bg-faded.table-bordered.mt-4
   %thead
     %tr
-      %th Nome do jogador
       %th Imagem do jogador
+      %th Nome do jogador
   %tbody
-    - players.each do |player|
-      %tr
-        %td
-          = image_tag "#{player[:thumbnail]}"
-        %td
-          - name = player[:soccerplayer].to_s.split('/').last.gsub('_', ' ')
-          = link_to name, "#{player[:soccerplayer]}", target: :_blank
+    - if players.present?
+      - players.each do |player|
+        %tr
+          %td
+            = image_tag "#{player[:thumbnail]}"
+          %td
+            - name = player[:soccerplayer].to_s.split('/').last.gsub('_', ' ')
+            = link_to name, "#{player[:soccerplayer]}", target: :_blank

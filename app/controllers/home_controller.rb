@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def players
-    client.query(query).limit(100)
+    client.query(query).limit(100) if params[:position].present? || params[:country].present? || params[:team].present?
   end
 
   private
@@ -66,6 +66,7 @@ class HomeController < ApplicationController
                   || ?position = <http://dbpedia.org/resource/Defender_(soccer)>
                   || ?position = <http://dbpedia.org/resource/Full_back_(association_football)>
                   || ?position = <http://dbpedia.org/resource/Center-back>
+                  || ?position = <http://dbpedia.org/page/Defender_(association_football)>
                   || ?position = <http://dbpedia.org/resource/Central_back>
                   || ?position = <http://dbpedia.org/resource/Centre_Back>)"
       when "goleiro"  
